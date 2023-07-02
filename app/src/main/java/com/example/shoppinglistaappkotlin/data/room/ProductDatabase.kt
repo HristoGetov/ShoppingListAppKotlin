@@ -1,4 +1,4 @@
-package com.example.shoppinglistaappkotlin.room
+package com.example.shoppinglistaappkotlin.data.room
 
 import android.content.Context
 import androidx.room.Database
@@ -11,8 +11,8 @@ abstract class ProductDatabase: RoomDatabase() {
 
     companion object{
         @Volatile
-        private var INSTANCE: ProductDatabase ?= null
-        fun getInstance(context: Context): ProductDatabase{
+        private var INSTANCE: ProductDatabase?= null
+        fun getInstance(context: Context): ProductDatabase {
             synchronized(this){
                 var instance = INSTANCE
                 if (instance == null){

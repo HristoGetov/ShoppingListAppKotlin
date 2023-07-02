@@ -1,4 +1,4 @@
-package com.example.shoppinglistaappkotlin.room
+package com.example.shoppinglistaappkotlin.data.room
 
 import androidx.room.ColumnInfo
 import androidx.room.Entity
@@ -12,11 +12,11 @@ data class Product(
     val id:Int,
 
     @ColumnInfo(name = "product_name")
-    val productName: String,
+    var productName: String,
 
     @ColumnInfo(name = "qty")
-    val quantity: String,
+    var quantity: String,
 
     @ColumnInfo(name = "product_type")
-    val type: String
+    var type: String
 )

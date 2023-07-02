@@ -1,4 +1,4 @@
-package com.example.shoppinglistaappkotlin.room
+package com.example.shoppinglistaappkotlin.data.room
 
 import androidx.lifecycle.LiveData
 import androidx.room.Dao

@@ -1,4 +1,4 @@
-package com.example.shoppinglistaappkotlin.room
+package com.example.shoppinglistaappkotlin.data.room
 
 class ProductRepository(private val dao: ProductDAO) {
 
