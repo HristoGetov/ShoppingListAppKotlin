@@ -14,7 +14,7 @@
       },
       "oauth_client": [
         {
-          "client_id": "977202194790-30t8bfngr280cjnoouc56j29ru7n887s.apps.googleusercontent.com",
+          "client_id": "977202194790-qhq7lccump6erl5iqt8hj6jqj2b1f03m.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
             "package_name": "com.example.shoppinglistaappkotlin",
@@ -22,7 +22,7 @@
           }
         },
         {
-          "client_id": "977202194790-gkjs6t2iqhqufel314smuoeg7opv0ur7.apps.googleusercontent.com",
+          "client_id": "977202194790-00f9ifvtqsabu381j148jbgtikq11qnm.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
@@ -35,7 +35,7 @@
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "977202194790-gkjs6t2iqhqufel314smuoeg7opv0ur7.apps.googleusercontent.com",
+              "client_id": "977202194790-00f9ifvtqsabu381j148jbgtikq11qnm.apps.googleusercontent.com",
               "client_type": 3
             }
           ]
