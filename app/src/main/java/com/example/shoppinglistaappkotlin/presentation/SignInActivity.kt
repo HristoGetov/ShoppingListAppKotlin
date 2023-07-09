@@ -17,12 +17,18 @@ import com.google.android.gms.auth.api.signin.GoogleSignInOptions
 import com.google.android.gms.tasks.Task
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.GoogleAuthProvider
+import com.google.firebase.firestore.FirebaseFirestore
 
 class SignInActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivitySignInBinding
     private lateinit var firebaseAuth: FirebaseAuth
     private lateinit var googleSignInClient: GoogleSignInClient
+    private lateinit var fireStore: FirebaseFirestore
+    private lateinit var userId: String
+    private lateinit var firstName: String
+    private lateinit var lastName: String
+    private lateinit var email: String
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -30,6 +36,7 @@ class SignInActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         firebaseAuth = FirebaseAuth.getInstance()
+        fireStore = FirebaseFirestore.getInstance()
         val gso = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
             .requestIdToken(getString(R.string.default_web_client_id))
             .requestEmail()
@@ -74,10 +81,7 @@ class SignInActivity : AppCompatActivity() {
                 val task = GoogleSignIn.getSignedInAccountFromIntent(result.data)
                 handleResult(task)
             } else{
-                Log.e("LOG", "resultCode: " + result.resultCode)
-                Log.e("LOG", "Activity.RESULT_OK: " + Activity.RESULT_OK)
-                Log.e("LOG", "Activity.RESULT_CANCELED: " + Activity.RESULT_CANCELED)
-                Log.e("LOG", "Activity.RESULT_FIRST_USER: " + Activity.RESULT_FIRST_USER)
+                Log.e("Error", "No Accounts found ")
             }
     }
 
@@ -85,7 +89,6 @@ class SignInActivity : AppCompatActivity() {
         if (task.isSuccessful){
             val account: GoogleSignInAccount? = task.result
             if (account != null){
-                Log.e("LOG", "Inside handleResult()")
                 updateUi(account)
             }
 
@@ -100,10 +103,15 @@ class SignInActivity : AppCompatActivity() {
         val credential = GoogleAuthProvider.getCredential(account.idToken,null)
         firebaseAuth.signInWithCredential(credential).addOnCompleteListener {
             if (it.isSuccessful){
-                Log.e("LOG","Inside updateUi, isSfuccessful")
-               // goToMain()
-                val intent = Intent(this,MainActivity::class.java)
-                startActivity(intent)
+                userId = firebaseAuth.currentUser?.uid.toString()
+                val docReference = fireStore.collection("users").document(userId)
+                val users = HashMap<String, Any>()
+                users["firstName"] = account.givenName.toString()
+                users["lastName"] = account.familyName.toString()
+                users["email"] = account.email.toString()
+                docReference.set(users)
+                goToMain()
+
             }else{
                 Toast.makeText(this, it.exception.toString(),Toast.LENGTH_LONG).show()
             }

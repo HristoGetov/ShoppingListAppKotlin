@@ -2,6 +2,9 @@
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
 <androidx.constraintlayout.widget.ConstraintLayout
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -13,7 +16,6 @@
         android:layout_width="350dp"
         android:layout_height="wrap_content"
         android:text="Welcome, Sign Up to continue"
-
         android:textColor="@color/black"
         android:textSize="32sp"
         android:textStyle="bold"
@@ -41,6 +43,7 @@
         android:textSize="28sp"
         android:layout_marginTop="50dp"
         android:inputType="textPassword"
+        android:textColorHint="@color/gray"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/email_input" />
@@ -50,12 +53,35 @@
         android:layout_width="350dp"
         android:layout_height="wrap_content"
         android:hint="Retype Your Password"
+        android:textColorHint="@color/gray"
         android:textSize="28sp"
         android:inputType="textPassword"
         android:layout_marginTop="50dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/password" />
+    <EditText
+        android:id="@+id/first_name"
+        android:layout_width="350dp"
+        android:layout_height="wrap_content"
+        android:hint="First Name"
+        android:textColorHint="@color/gray"
+        android:textSize="28sp"
+        android:layout_marginTop="50dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/confirm_password" />
+    <EditText
+        android:id="@+id/last_name"
+        android:layout_width="350dp"
+        android:layout_height="wrap_content"
+        android:hint="Last Name"
+        android:textColorHint="@color/gray"
+        android:textSize="28sp"
+        android:layout_marginTop="50dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/first_name" />
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/sign_up_btn"
@@ -64,13 +90,14 @@
         android:layout_marginHorizontal="16dp"
         android:background="@drawable/sign_in_button_shape"
         android:text="Sign Up"
+        android:layout_marginTop="20dp"
         android:textSize="20sp"
         android:textStyle="bold"
         android:elevation="45dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/confirm_password" />
+        app:layout_constraintTop_toBottomOf="@+id/last_name" />
 
     <TextView
         android:id="@+id/textView"
@@ -78,12 +105,13 @@
         android:layout_height="wrap_content"
         android:textColor="@color/white"
         android:textSize="17sp"
+        android:layout_marginTop="40dp"
+        android:layout_marginBottom="20dp"
         android:text="Already Registered, Sign In!"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/sign_up_btn" />
-
-
 </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
 </layout>
