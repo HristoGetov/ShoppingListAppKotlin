@@ -8,6 +8,12 @@
             name="productViewModel"
             type="com.example.shoppinglistaappkotlin.presentation.viewModel.ProductViewModel" />
     </data>
+    <androidx.drawerlayout.widget.DrawerLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/drawer_layout"
+        tools:context=".MainActivity">
+
 <androidx.constraintlayout.widget.ConstraintLayout
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -99,17 +105,6 @@
             app:layout_constraintStart_toEndOf="@+id/qty"
             app:layout_constraintTop_toBottomOf="@+id/btn1" />
 
-        <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/sign_out_btn"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="12dp"
-            android:layout_marginEnd="4dp"
-            android:background="@drawable/button_shape"
-            android:text="Sign Out"
-            android:textColor="@color/white"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/btn2" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -121,8 +116,17 @@
         android:layout_marginTop="20dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/body_constraint" />
-
-
 </androidx.constraintlayout.widget.ConstraintLayout>
+        <com.google.android.material.navigation.NavigationView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:id="@+id/nav_view"
+            android:fitsSystemWindows="true"
+            android:layout_gravity="start"
+            app:headerLayout="@layout/nav_header"
+            app:menu="@menu/nav_menu"/>
+
+
+    </androidx.drawerlayout.widget.DrawerLayout>
 
 </layout>

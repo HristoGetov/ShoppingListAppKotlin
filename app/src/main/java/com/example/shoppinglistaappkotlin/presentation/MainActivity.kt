@@ -2,12 +2,15 @@ package com.example.shoppinglistaappkotlin.presentation
 
 import android.content.Intent
 import android.os.Bundle
+import android.view.MenuItem
 import android.view.View
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import androidx.appcompat.app.AppCompatActivity
 import android.widget.Toast
+import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.databinding.DataBindingUtil
+import androidx.drawerlayout.widget.DrawerLayout
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.shoppinglistaappkotlin.R
@@ -26,6 +29,9 @@ class MainActivity : AppCompatActivity() {
     private lateinit var  productViewModel: ProductViewModel
     private lateinit var repository: ProductRepository
     private lateinit var firebaseAuth: FirebaseAuth
+    private lateinit var toggle: ActionBarDrawerToggle
+    private lateinit var drawerLayout: DrawerLayout
+
 
     companion object{
         private lateinit var instance: MainActivity
@@ -42,7 +48,37 @@ class MainActivity : AppCompatActivity() {
         val factory = ProductViewModelFactory(repository,this)
         productViewModel = ViewModelProvider(this,factory)[ProductViewModel::class.java]
 
+        drawerLayout = binding.drawerLayout
+
+        toggle = ActionBarDrawerToggle(
+            this@MainActivity,
+            drawerLayout,
+            R.string.open,
+            R.string.close
+        )
+
+        drawerLayout.addDrawerListener(toggle)
+
+        //synchronize the state of the drawer Open/Close
+        toggle.syncState()
+
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
+
         binding.productViewModel = productViewModel
+        val navView = binding.navView
+        navView.setNavigationItemSelectedListener {
+            it.isChecked = true
+            when (it.itemId) {
+                R.id.logout ->{
+                    firebaseAuth.signOut()
+                    val intent = Intent(this, SignInActivity::class.java)
+                    startActivity(intent)
+                    finish()
+                }
+            }
+            true
+        }
+
         val typeSpinner = binding.value
         val typeAdapter = ArrayAdapter<String>(this,android.R.layout.simple_spinner_item,
         resources.getStringArray(R.array.types))
@@ -64,12 +100,7 @@ class MainActivity : AppCompatActivity() {
 
         }
 
-        binding.signOutBtn.setOnClickListener {
-            firebaseAuth.signOut()
-            val intent = Intent(this, SignInActivity::class.java)
-            startActivity(intent)
-            finish()
-        }
+
         binding.lifecycleOwner = this
 
         initRecyclerView()
@@ -95,6 +126,14 @@ class MainActivity : AppCompatActivity() {
         Toast.makeText(this,"Selected product is ${selectedItem.productName}",Toast.LENGTH_LONG).show()
         productViewModel.initUpdateAndDelete(selectedItem)
 
+    }
+
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        if(toggle.onOptionsItemSelected(item)){
+            return true
+        }
+        return super.onOptionsItemSelected(item)
     }
 
 }

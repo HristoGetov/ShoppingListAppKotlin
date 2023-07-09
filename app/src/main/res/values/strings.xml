@@ -14,5 +14,8 @@
         <item>кутии</item>
         <item>бутилки</item>
         <item>бр.</item>
+        <item>пакети</item>
     </string-array>
+    <string name="open">Open</string>
+    <string name="close">Close</string>
 </resources>
