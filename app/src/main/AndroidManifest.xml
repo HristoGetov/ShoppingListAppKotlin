@@ -13,24 +13,33 @@
         android:theme="@style/Theme.ShoppingListaAppKotlin"
         tools:targetApi="31">
         <activity
+            android:name=".presentation.FriendsListActivity"
+            android:exported="false"
+            android:parentActivityName=".presentation.MainActivity"/>
+        <activity
+            android:name=".presentation.viewModel.FindFriendsActivity"
+            android:exported="false"
+            android:parentActivityName=".presentation.MainActivity" />
+        <activity
             android:name=".presentation.SignUpActivity"
-            android:exported="false" />
+            android:exported="false"
+            android:screenOrientation="portrait" />
         <activity
             android:name=".presentation.SignInActivity"
-            android:exported="true">
-        <intent-filter>
-            <action android:name="android.intent.action.MAIN" />
+            android:exported="true"
+            android:screenOrientation="portrait">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
 
-            <category android:name="android.intent.category.LAUNCHER" />
-        </intent-filter>
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
         </activity>
         <activity
             android:name=".presentation.MainActivity"
             android:exported="true"
             android:label="@string/app_name"
-            android:theme="@style/Theme.ShoppingListaAppKotlin">
-
-        </activity>
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.ShoppingListaAppKotlin" />
     </application>
 
 </manifest>

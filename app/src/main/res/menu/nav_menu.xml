@@ -4,20 +4,23 @@
     tools:showIn="navigation_view">
 
     <group android:checkableBehavior="single">
-        <item android:id="@+id/dummy1"
-            android:title="Dummy 1"/>
-        <item android:id="@+id/dummy2"
-            android:title="Dummy 2"/>
+        <item android:id="@+id/send_list"
+            android:title="@string/send_list"/>
+
+        <item android:id="@+id/friends_list"
+            android:title="@string/friends_list"/>
         <item
-            android:id="@+id/dummy3"
-            android:title="Dummy 3"/>
+            android:id="@+id/find_people"
+            android:title="@string/find_friends"/>
     </group>
 
-    <item android:title="Settings">
+    <item android:title="@string/Settings">
         <menu>
             <group android:checkableBehavior="single">
+                <item android:id="@+id/system_settings"
+                    android:title="@string/system_settings"/>
                 <item android:id="@+id/logout"
-                    android:title="Sign Out"/>
+                    android:title="@string/log_out"/>
             </group>
         </menu>
     </item>

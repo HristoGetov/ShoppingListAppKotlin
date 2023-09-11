@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Списък за пазаруване HG</string>
+    <string name="action_settings">Настройки</string>
+    <!-- Strings used for fragments for navigation -->
+    <string name="first_fragment_label">First Fragment</string>
+    <string name="second_fragment_label">Second Fragment</string>
+    <string name="next">Следващ</string>
+    <string name="previous">Предишен</string>
+
+    <string-array name="types">
+        <item>кг.</item>
+        <item>г.</item>
+        <item>л.</item>
+        <item>кутии</item>
+        <item>бутилки</item>
+        <item>бр.</item>
+        <item>пакети</item>
+    </string-array>
+    <string name="open">Отвори</string>
+    <string name="close">Затвори</string>
+    <string name="sign_in_welcome">Добре дошли, създайте профил, за да продължите!</string>
+    <string name="type_email">Въведете имейл</string>
+    <string name="type_password">Въведете парола</string>
+    <string name="retype_password">Въведете парола отново</string>
+    <string name="first_name">Собствено име</string>
+    <string name="last_name">Фамилия</string>
+    <string name="sign_up">Регистрация</string>
+    <string name="sign_in_link">Ако имате регистрация, впишете се!</string>
+    <string name="login">Вписване</string>
+    <string name="welcome_sign_in_to_continue">Добре дошли, моля впишете се за да продълижте</string>
+    <string name="google_signin">Вписване с Google</string>
+    <string name="not_registered_yet_sign_up">Регистрирайте се, ако нямате регистрация!</string>
+    <string name="product">Продукт</string>
+    <string name="quantity">Количество</string>
+    <string name="kilos">кг.</string>
+    <string name="send_list">Изпрати Списък</string>
+    <string name="friends_list">Преглед на Приятели</string>
+    <string name="find_friends">Намери Приятели</string>
+    <string name="Settings">Настройки</string>
+    <string name="log_out">Отписване</string>
+    <string name="system_settings">Системни настройки</string>
+</resources>
