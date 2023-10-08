@@ -40,4 +40,6 @@
     <string name="Settings">Настройки</string>
     <string name="log_out">Отписване</string>
     <string name="system_settings">Системни настройки</string>
+    <string name="save">Запази</string>
+    <string name="delete">Изтрий</string>
 </resources>

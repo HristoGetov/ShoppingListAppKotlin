@@ -73,14 +73,13 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/qty" />
 
-        <ImageButton
+        <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/btn1"
-            android:layout_width="60dp"
-            android:layout_height="60dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:layout_marginTop="-25dp"
             android:layout_marginEnd="24dp"
-            android:elevation="45dp"
-            android:src="@drawable/save_button"
+            android:text="@string/save"
             android:onClick="@{()->productViewModel.saveOrUpdate()}"
             app:layout_constraintBottom_toTopOf="@+id/btn2"
             android:background="@drawable/positive_button_shape"
@@ -89,23 +88,21 @@
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_chainStyle="packed" />
 
-        <ImageButton
+        <androidx.appcompat.widget.AppCompatButton
             android:onClick="@{()->productViewModel.clearAllOrDelete()}"
             android:id="@+id/btn2"
-            android:layout_width="60dp"
-            android:layout_height="60dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:layout_marginEnd="23dp"
             android:background="@drawable/button_shape"
             android:layout_marginTop="10dp"
+            android:text="@string/delete"
             android:elevation="45dp"
-            android:src="@drawable/cleaning_button"
             android:layout_marginBottom="22dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/qty"
             app:layout_constraintTop_toBottomOf="@+id/btn1" />
-
-
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <androidx.appcompat.widget.SwitchCompat
@@ -122,9 +119,8 @@
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/allProducts"
         android:layout_width="match_parent"
-        android:layout_height="420dp"
+        android:layout_height="390dp"
         app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginTop="20dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/lang_switch" />
 </androidx.constraintlayout.widget.ConstraintLayout>

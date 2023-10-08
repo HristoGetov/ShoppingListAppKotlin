@@ -159,9 +159,7 @@ class MainActivity : AppCompatActivity() {
                     true -> {
                         setLocale("bg-BG")
                         langSwitch.isChecked = false
-
                     }
-
                     false -> {
                         setLocale("en-EN")
                         langSwitch.isChecked = true
@@ -171,7 +169,7 @@ class MainActivity : AppCompatActivity() {
         }
 
     }
-    fun setLocale(language: String?) {
+    private fun setLocale(language: String?) {
         val appLocale: LocaleListCompat = LocaleListCompat.forLanguageTags(language)
         AppCompatDelegate.setApplicationLocales(appLocale)
     }
@@ -197,7 +195,6 @@ class MainActivity : AppCompatActivity() {
         productViewModel.initUpdateAndDelete(selectedItem)
 
     }
-
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         if(toggle.onOptionsItemSelected(item)){

@@ -39,4 +39,6 @@
     <string name="Settings">Settings</string>
     <string name="log_out">Logout</string>
     <string name="system_settings">System Settings</string>
+    <string name="save">Save</string>
+    <string name="delete">Delete</string>
 </resources>
