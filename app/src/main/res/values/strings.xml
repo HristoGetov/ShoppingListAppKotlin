@@ -41,4 +41,6 @@
     <string name="system_settings">System Settings</string>
     <string name="save">Save</string>
     <string name="delete">Delete</string>
+    <string name="change_language">Change Language</string>
+    <string name="change_theme">Change Theme</string>
 </resources>

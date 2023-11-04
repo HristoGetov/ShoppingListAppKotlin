@@ -18,7 +18,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fitsSystemWindows="true"
-    android:background="@drawable/gradient_background"
+    android:background="@drawable/gradient_background_white_theme"
     android:keepScreenOn="true"
     tools:context=".presentation.MainActivity">
 
@@ -26,7 +26,7 @@
         android:id="@+id/body_constraint"
         android:layout_width="match_parent"
         android:layout_marginTop="20dp"
-        android:layout_height="260dp"
+        android:layout_height="200dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
@@ -75,11 +75,11 @@
 
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/btn1"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="-25dp"
-            android:layout_marginEnd="24dp"
+            android:layout_width="70dp"
+            android:layout_height="40dp"
+            android:layout_marginEnd="45dp"
             android:text="@string/save"
+            android:textStyle="bold"
             android:onClick="@{()->productViewModel.saveOrUpdate()}"
             app:layout_constraintBottom_toTopOf="@+id/btn2"
             android:background="@drawable/positive_button_shape"
@@ -91,30 +91,23 @@
         <androidx.appcompat.widget.AppCompatButton
             android:onClick="@{()->productViewModel.clearAllOrDelete()}"
             android:id="@+id/btn2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="23dp"
+            android:layout_width="70dp"
+            android:layout_height="40dp"
+            android:layout_marginEnd="45dp"
             android:background="@drawable/button_shape"
             android:layout_marginTop="10dp"
+            android:textStyle="bold"
             android:text="@string/delete"
+            android:textColor="@color/white"
             android:elevation="45dp"
-            android:layout_marginBottom="22dp"
+            android:layout_marginBottom="45dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/qty"
             app:layout_constraintTop_toBottomOf="@+id/btn1" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
-    <androidx.appcompat.widget.SwitchCompat
-        android:id="@+id/lang_switch"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="16dp"
-        android:thumb="@drawable/thumb"
-        app:layout_constraintBottom_toTopOf="@+id/allProducts"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/body_constraint"
-        app:track="@drawable/track" />
+
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/allProducts"
@@ -122,7 +115,7 @@
         android:layout_height="390dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/lang_switch" />
+        app:layout_constraintTop_toBottomOf="@+id/body_constraint" />
 </androidx.constraintlayout.widget.ConstraintLayout>
         <com.google.android.material.navigation.NavigationView
             android:layout_width="wrap_content"

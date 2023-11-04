@@ -2,7 +2,6 @@ package com.example.shoppinglistaappkotlin.presentation
 
 import android.content.Context
 import android.content.Intent
-import android.content.res.Configuration
 import android.os.Bundle
 import android.util.Log
 import android.view.MenuItem
@@ -16,14 +15,11 @@ import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.core.os.LocaleListCompat
 import androidx.databinding.DataBindingUtil
-import androidx.datastore.core.DataStore
-import androidx.datastore.preferences.preferencesDataStore
 import androidx.drawerlayout.widget.DrawerLayout
-import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.ViewModelProvider
-import androidx.lifecycle.asLiveData
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.shoppinglistaappkotlin.R
+import com.example.shoppinglistaappkotlin.SettingsActivity
 import com.example.shoppinglistaappkotlin.data.DataStoreManager
 import com.example.shoppinglistaappkotlin.presentation.view.ProductRecyclerViewAdapter
 import com.example.shoppinglistaappkotlin.presentation.viewModel.ProductViewModel
@@ -35,9 +31,6 @@ import com.example.shoppinglistaappkotlin.data.room.ProductRepository
 import com.example.shoppinglistaappkotlin.presentation.viewModel.DataStoreViewModel
 import com.example.shoppinglistaappkotlin.presentation.viewModel.FindFriendsActivity
 import com.google.firebase.auth.FirebaseAuth
-import kotlinx.coroutines.Dispatchers
-import java.util.Locale
-import java.util.prefs.Preferences
 
 class MainActivity : AppCompatActivity() {
 
@@ -48,8 +41,6 @@ class MainActivity : AppCompatActivity() {
     private lateinit var toggle: ActionBarDrawerToggle
     private lateinit var drawerLayout: DrawerLayout
     private lateinit var context: Context
-    private lateinit var dataStoreViewModel: DataStoreViewModel
-    private lateinit var dataStoreManager: DataStoreManager
 
 
 
@@ -64,9 +55,8 @@ class MainActivity : AppCompatActivity() {
         context = this
         firebaseAuth = FirebaseAuth.getInstance()
         binding = DataBindingUtil.setContentView(this, R.layout.activity_main)
-        dataStoreViewModel = ViewModelProvider(this)[DataStoreViewModel::class.java]
-        dataStoreManager = DataStoreManager(this)
-        checkLanguage()
+
+
         val types = resources.getStringArray(R.array.types)
         val dao = ProductDatabase.getInstance(application).productDAO
          repository = ProductRepository(dao)
@@ -107,6 +97,10 @@ class MainActivity : AppCompatActivity() {
                     val intent = Intent(this, FriendsListActivity::class.java)
                     startActivity(intent)
                 }
+                R.id.system_settings ->{
+                    val settingsIntent = Intent(this, SettingsActivity::class.java)
+                    startActivity(settingsIntent)
+                }
             }
             true
 
@@ -129,50 +123,13 @@ class MainActivity : AppCompatActivity() {
             override fun onNothingSelected(parent: AdapterView<*>?) {
 
             }
-
         }
-        binding.langSwitch.setOnCheckedChangeListener(CompoundButton.OnCheckedChangeListener { buttonView, isChecked ->
-            Log.e("Log", "isChecked: $isChecked")
-            if (isChecked){
-                setLocale("en-En")
-            }else{
-                setLocale("bg-BG")
-            }
-        })
         binding.lifecycleOwner = this
         initRecyclerView()
-        binding.langSwitch.setOnCheckedChangeListener{ _ , isChecked ->
-            when(isChecked){
-                true->{
-                    dataStoreViewModel.setLanguage(false)
-                }false ->{
-                dataStoreViewModel.setLanguage(true)
-                }
-            }
-        }
     }
 
-    private fun checkLanguage() {
-        binding.apply {
-            dataStoreViewModel.getLanguage.observe(this@MainActivity) { isBGLannguage ->
-                when (isBGLannguage) {
-                    true -> {
-                        setLocale("bg-BG")
-                        langSwitch.isChecked = false
-                    }
-                    false -> {
-                        setLocale("en-EN")
-                        langSwitch.isChecked = true
-                    }
-                }
-            }
-        }
 
-    }
-    private fun setLocale(language: String?) {
-        val appLocale: LocaleListCompat = LocaleListCompat.forLanguageTags(language)
-        AppCompatDelegate.setApplicationLocales(appLocale)
-    }
+
 
 
     private fun initRecyclerView() {

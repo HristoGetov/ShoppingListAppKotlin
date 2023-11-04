@@ -42,4 +42,6 @@
     <string name="system_settings">Системни настройки</string>
     <string name="save">Запази</string>
     <string name="delete">Изтрий</string>
+    <string name="change_language">Смяна на Език</string>
+    <string name="change_theme">Смяна на тема</string>
 </resources>
